@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز خدمة التوصيل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="header">
+      <div class="logo-circle">🚗</div>
+      <h1>حجز خدمة التوصيل</h1>
+      <p class="sub">املأ البيانات وسنتواصل معك لتأكيد السعر</p>
+    </div>
+
+    <div id="form-area">
+
+      <div class="card">
+        <div class="section-title"><span>👤</span> بياناتك الشخصية</div>
+        <div class="field">
+          <label for="name">الاسم بالكامل</label>
+          <input type="text" id="name" placeholder="مثال: أحمد محمد">
+          <div class="err-msg" id="err-name">من فضلك اكتب اسمك</div>
+        </div>
+        <div class="field">
+          <label for="phone">رقم التليفون</label>
+          <input type="tel" id="phone" placeholder="01xxxxxxxxx">
+          <div class="err-msg" id="err-phone">من فضلك اكتب رقم صحيح (01xxxxxxxxx)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title"><span>📍</span> تفاصيل الرحلة</div>
+        <div class="field">
+          <label for="from">نقطة البداية</label>
+          <input type="text" id="from" placeholder="مثال: مدينة نصر، القاهرة">
+          <div class="err-msg" id="err-from">من فضلك اكتب نقطة البداية</div>
+        </div>
+        <div class="field">
+          <label for="to">نقطة النهاية</label>
+          <input type="text" id="to" placeholder="مثال: وسط البلد، القاهرة">
+          <div class="err-msg" id="err-to">من فضلك اكتب نقطة النهاية</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title"><span>⚙️</span> تفاصيل الخدمة</div>
+
+        <div class="field">
+          <label>عدد الأفراد في العربية</label>
+          <div class="count-ctrl">
+            <button class="count-btn" onclick="change('persons', -1)" type="button">−</button>
+            <span class="count-val" id="persons-val">1</span>
+            <button class="count-btn" onclick="change('persons', 1)" type="button">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>عدد مرات التوصيل في الشهر</label>
+          <div class="count-ctrl">
+            <button class="count-btn" onclick="change('times', -1)" type="button">−</button>
+            <span class="count-val" id="times-val">1</span>
+            <button class="count-btn" onclick="change('times', 1)" type="button">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>وقت الرحلة</label>
+          <div class="time-row">
+            <div>
+              <div class="time-label">من الساعة</div>
+              <input type="time" id="time-from" value="08:00">
+            </div>
+            <div class="time-sep">↔</div>
+            <div>
+              <div class="time-label">لحد الساعة</div>
+              <input type="time" id="time-to" value="09:00">
+            </div>
+          </div>
+          <div class="err-msg" id="err-time">وقت النهاية لازم يكون بعد وقت البداية</div>
+        </div>
+
+        <div class="field">
+          <label for="notes">ملاحظات إضافية (اختياري)</label>
+          <textarea id="notes" placeholder="أي تفاصيل إضافية تحب تذكرها..."></textarea>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()" type="button">
+        إرسال الطلب
+      </button>
+
+    </div>
+
+    <div class="success-box" id="success-box">
+      <div class="success-icon">✅</div>
+      <h2>تم إرسال طلبك!</h2>
+      <p>استلمنا بياناتك وهنتواصل معاك لتأكيد السعر 🚗</p>
+      <button class="reset-btn" onclick="resetForm()">إرسال طلب جديد</button>
+    </div>
+
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>
