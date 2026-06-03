@@ -74,7 +74,7 @@ function submitForm() {
   setError('name', !name);
   if (!name) valid = false;
 
-  var phoneOk = /^0\d{9,10}$/.test(phone);
+  var phoneOk = /^0\d{9,10}$/.test(phone) || /^(\+20|0020)\d{9,10}$/.test(phone);
   setError('phone', !phoneOk);
   if (!phoneOk) valid = false;
 
