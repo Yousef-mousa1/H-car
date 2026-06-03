@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حجز خدمة التوصيل</title>
+  <title>Volt Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="wrap">
     <div class="header">
-      <div class="logo-circle">🚗</div>
-      <h1>حجز خدمة التوصيل</h1>
+      <div class="logo-circle">
+        <img src="phato/Screenshot 2026-06-03 at 7.09.48 PM.png" alt="photo">
+      </div>
+      <h1>Book your car</h1>
       <p class="sub">املأ البيانات وسنتواصل معك لتأكيد السعر</p>
     </div>
 
@@ -29,6 +30,10 @@
           <label for="phone">رقم التليفون</label>
           <input type="tel" id="phone" placeholder="01xxxxxxxxx">
           <div class="err-msg" id="err-phone">من فضلك اكتب رقم صحيح (01xxxxxxxxx)</div>
+        </div>
+        <div class="field">
+          <label for="company">اسم الشركة <span style="color:#aaa;font-weight:400">(اختياري)</span></label>
+          <input type="text" id="company" placeholder="مثال: شركة النيل للمقاولات">
         </div>
       </div>
 
@@ -83,6 +88,27 @@
           <div class="err-msg" id="err-time">وقت النهاية لازم يكون بعد وقت البداية</div>
         </div>
 
+        <!-- نوع العربية -->
+        <div class="field">
+          <label for="car-type">نوع العربية</label>
+          <div class="select-wrap">
+            <select id="car-type" onchange="onCarTypeChange()">
+              <option value="ملاكي">🚗 ملاكي</option>
+              <option value="سوزوكي">🚐 سوزوكي</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <!-- المكيف -->
+        <div class="field">
+          <label>عربية مكيفة؟</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="ac-yes" onclick="setAC(true)" type="button">❄️ آه</button>
+            <button class="toggle-btn" id="ac-no" onclick="setAC(false)" type="button">🚫 لأ</button>
+          </div>
+        </div>
+
         <div class="field">
           <label for="notes">ملاحظات إضافية (اختياري)</label>
           <textarea id="notes" placeholder="أي تفاصيل إضافية تحب تذكرها..."></textarea>
@@ -107,3 +133,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
