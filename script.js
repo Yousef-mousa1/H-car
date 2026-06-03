@@ -4,7 +4,7 @@ var SHEET_URL = 'https://script.google.com/macros/s/AKfycby1WZv2bhWrgTw9huDmZhR-
 // ===== العدادات =====
 var counts = { persons: 1, times: 1 };
 var mins   = { persons: 1, times: 1 };
-var maxs   = { persons: 4, times: 30 };
+var maxs   = { persons: 4, times: 7 };
  
 function change(key, delta) {
   counts[key] = Math.min(maxs[key], Math.max(mins[key], counts[key] + delta));
