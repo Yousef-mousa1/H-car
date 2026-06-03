@@ -60,6 +60,7 @@ function setError(id, has) {
 function submitForm() {
   var name    = document.getElementById('name').value.trim();
   var phone   = document.getElementById('phone').value.trim().replace(/\s/g, '');
+  phone = phone.replace(/[٠-٩]/g, function(d) { return d.charCodeAt(0) - 1632; });
   var company = document.getElementById('company').value.trim();
   var from    = document.getElementById('from').value.trim();
   var to      = document.getElementById('to').value.trim();
