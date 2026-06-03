@@ -1,5 +1,5 @@
 // ===== Google Apps Script URL =====
-var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyfInKKUaR7tQbPmqWgtxhgHi-tVONX5oBZBE-7nK7wK1YZq-mHH_fU54C3bpvAFLU/exec';
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwXqtq80tMTzeNdcBdgWUfZmPYTud2lea_IJYK-xd4w_Y3Q5VsGD_mkXzZXMHSWmYbY/exec';
 
 // ===== العدادات =====
 var counts = { persons: 1, times: 1 };
