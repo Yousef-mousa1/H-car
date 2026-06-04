@@ -1,5 +1,7 @@
 // ===== Google Apps Script URL =====
-var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzltYTtN67s8AmT47rYAGVTsk227Xkguohpt-oXWwcLtNkCed9nfgQ0Ypejzip-JV63/exec';// ===== العدادات =====
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwsEneASsmVYojLJ8mrmne-KKMEmT_Lms4YuvgYL_nczbk_KgjKh5fwOcL_jD0LHJ8/exec';
+
+// ===== العدادات =====
 var counts = { persons: 1, times: 1 };
 var mins   = { persons: 1, times: 1 };
 var maxs   = { persons: 4, times: 7 };
@@ -34,7 +36,7 @@ function change(key, delta) {
 
 // ===== تحويل الوقت =====
 function fmt(t) {
-  if (!t) return '';
+  if (!t) return 'none';
   var p = t.split(':');
   var h = parseInt(p[0]);
   var m = p[1];
@@ -58,7 +60,6 @@ function setError(id, has) {
 function submitForm() {
   var name    = document.getElementById('name').value.trim();
   var phone   = document.getElementById('phone').value.trim().replace(/\s/g, '');
-  phone = phone.replace(/[٠-٩]/g, function(d) { return d.charCodeAt(0) - 1632; });
   var company = document.getElementById('company').value.trim();
   var from    = document.getElementById('from').value.trim();
   var to      = document.getElementById('to').value.trim();
@@ -73,7 +74,7 @@ function submitForm() {
   setError('name', !name);
   if (!name) valid = false;
 
-  var phoneOk = /^0\d{9,10}$/.test(phone) || /^(\+20|0020)\d{9,10}$/.test(phone);
+  var phoneOk = /^0\d{9,10}$/.test(phone);
   setError('phone', !phoneOk);
   if (!phoneOk) valid = false;
 
@@ -98,16 +99,16 @@ function submitForm() {
   var data = {
     name:     name,
     phone:    phone,
-    company:  company,
+    company:  company || 'none',
     from:     from,
     to:       to,
-    persons:  counts.persons,
-    times:    counts.times,
+    persons:  String(counts.persons),
+    times:    String(counts.times),
     timeFrom: fmt(tFrom),
     timeTo:   fmt(tTo),
     carType:  carType,
     ac:       acValue ? 'آه' : 'لأ',
-    notes:    notes
+    notes:    notes || 'none'
   };
 
   // الإرسال للشيت
