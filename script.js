@@ -1,6 +1,5 @@
 // ===== Google Apps Script URL =====
 var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyW-ySiCCKnhFDTdSmygNLoJbFb-Kt4ZFSF0QuXvoDLIRoXTQvhucy3N-wLfBSQj_s/exec';
-
 // ===== العدادات =====
 var counts = { persons: 1, times: 1 };
 var mins   = { persons: 1, times: 1 };
@@ -60,6 +59,7 @@ function setError(id, has) {
 function submitForm() {
   var name    = document.getElementById('name').value.trim();
   var phone   = document.getElementById('phone').value.trim().replace(/\s/g, '');
+  phone = phone.replace(/[٠-٩]/g, function(d) { return d.charCodeAt(0) - 1632; });
   var company = document.getElementById('company').value.trim();
   var from    = document.getElementById('from').value.trim();
   var to      = document.getElementById('to').value.trim();
@@ -74,7 +74,7 @@ function submitForm() {
   setError('name', !name);
   if (!name) valid = false;
 
-  var phoneOk = /^0\d{9,10}$/.test(phone);
+  var phoneOk = /^0\d{9,10}$/.test(phone) || /^(\+20|0020)\d{9,10}$/.test(phone);
   setError('phone', !phoneOk);
   if (!phoneOk) valid = false;
 
